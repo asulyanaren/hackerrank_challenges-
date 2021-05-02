@@ -10,30 +10,31 @@ using namespace std;
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
-       std::string text, arg;
-    int cmd;
-    std::stack<std::string> history;
+    std::string txt;
+    std::string arg;
+    int c;
+    std::stack<std::string> st;
     
-    std::cin >> cmd;
-    while (std::cin >> cmd) {
-        switch (cmd) {
-            case 1: // Append
+    std::cin >> c;
+    while (std::cin >> c) {
+        switch (c) {
+            case 1:
                 std::cin >> arg;
-                history.push(text);
+                st.push(txt);
                 text.append(arg);
                 break;
-            case 2: // Erase
-                std::cin >> cmd;
-                history.push(text);
-                text.erase(text.length() - cmd);
+            case 2: 
+                std::cin >> c;
+                st.push(txt);
+                text.erase(txt.length() - c);
                 break;
-            case 3: // Get
-                std::cin >> cmd;
-                std::cout << text[cmd - 1] << '\n';
+            case 3:
+                std::cin >> c;
+                std::cout << txt[c - 1] << '\n';
                 break;
-            case 4: // Undo
-                text = std::move(history.top());
-                history.pop();
+            case 4:
+                txt = std::move(st.top());
+                st.pop();
                 break;
         }        
     }
